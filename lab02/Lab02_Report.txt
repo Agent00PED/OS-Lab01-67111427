@@ -1,0 +1,21 @@
+======================================================
+COE67-222 Operating Systems - Lab 02 Report
+Name: Wongsathon U-kaew
+Student ID: 67111427
+======================================================
+
+1. Execution Time Comparison:
+- Sequential Time: 8.69 seconds
+- Multithreading Time: 9.12 seconds
+- Multiprocessing Time: 8.00 seconds
+
+2. System Observation (htop):
+With threads, only ONE core hit 100%, the other stayed idle. With
+processes, BOTH cores hit 100% at the same time, since each process runs
+separately.
+
+3. Analysis (The GIL):
+Threads did not speed up because Python's GIL only lets one thread run
+at a time, no matter how many cores we have. Processes are faster
+because each one has its own memory and GIL, so the OS can run them on
+different cores at once.
