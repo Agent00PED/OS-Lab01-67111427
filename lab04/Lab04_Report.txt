@@ -1,0 +1,25 @@
+======================================================
+COE67-222 Operating Systems - Lab 04 Report
+Name: Wongsathon U-kaew
+Student ID: 67111427
+======================================================
+
+1. The Deadlock (Phase 2):
+Yes, it froze (had to press Ctrl+C). Model A locks GPU 0, Model B locks
+GPU 1, then each waits for the other's lock forever. This is Circular
+Wait, and it causes the Deadlock.
+
+2. The Solution (Phase 3):
+Making Model B also ask for GPU 0 first removes the circular waiting.
+Confirmed: deadlock_avoidance.py finished with no freeze.
+
+3. Starvation vs Deadlock (Phase 4):
+My run (3 sec): Greedy_A: 23512, Greedy_B: 23581, Polite: 297.
+Unlike Deadlock, the program keeps running, it just never freezes. The
+greedy threads just get the lock way more often.
+Aging fix: raise a waiting process's priority over time so it eventually
+gets picked too.
+
+4. Deadlock Detection & Recovery (Phase 3.3):
+The timeout acts as Detection: no lock in 2 seconds = treated as a
+deadlock. For Recovery, Model A releases GPU 0 so Model B can finish.
