@@ -1,0 +1,26 @@
+======================================================
+COE67-222 Operating Systems - Lab 03 Report
+Name: Wongsathon U-kaew
+Student ID: 67111427
+======================================================
+
+1. The Race Condition (Phase 2):
+Ran it 3 times: 200/100, 200/101, 200/100 (Expected/Actual). The number
+is always less than 200. This happens because updating the value takes 3
+small steps: read, add 1, then save. The OS can stop a thread in the
+middle of these steps. So both threads read the same old number, and one
+update gets lost. This is called a Race Condition.
+
+2. Mutex vs. Semaphore (Phase 3):
+- mutex makes sure only ONE thread can touch in_index/out_index at a
+time.
+- empty and full count how many slots are free or full, so the producer
+waits when the buffer is full, and the consumer waits when it is empty.
+A Mutex can only be locked or unlocked, it can't count things. That is
+why we need Semaphores too.
+
+3. Deadlock Awareness:
+If we lock mutex first, then try empty, and the buffer is full: the
+producer is stuck waiting for empty, but it is still holding mutex. The
+consumer needs mutex to free a slot, but can't get it. Both wait forever
+= Deadlock.
