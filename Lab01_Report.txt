@@ -1,16 +1,20 @@
 ======================================================
-COE67-XXX Operating Systems - Lab 01 Report
-Name: 
-Student ID: 
+COE67-222 Operating Systems - Lab 01 Report
+Name: Wongsathon U-kaew
+Student ID: 6711427
 ======================================================
 
 1. Hardware Baseline:
-- OS Version:
-- Number of CPU Cores:
-- Total RAM:
+- OS Version: Linux 6.8.0-1052-azure (Ubuntu 22.04)
+- CPU Cores: 2
+- Total RAM: 7.8 GB
 
-2. Observation (from htop during stress test):
-[Write your answer here]
+2. Observation:
+Only ONE core. In htop, one core bar hit 100% and the rest stayed idle,
+because the script runs on a single thread and the OS can't split one
+thread across many cores.
 
 3. Analysis:
-[Write your answer here]
+We need to know RAM and CPU limits before training, or the program can
+crash (not enough RAM) or run slower than expected if we use more workers
+than we have cores.
